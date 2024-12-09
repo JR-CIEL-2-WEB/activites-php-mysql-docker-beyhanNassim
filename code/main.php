@@ -1,27 +1,29 @@
 <?php
 
-
-include 'statistiques.php';
-$tab = [15, 18, 12, 20, 14];
-
-
-$moyenneNotes = moyenne($tab);
+require_once 'tri_selection.php';
+require_once 'read_tab.php';
 
 
-echo "La moyenne des notes est : " . $moyenneNotes."</br>";
-require_once 'statistiques.php';
+$tableau = [64, 34, 25, 12, 22, 11, 90];
 
 
-$salaires = [1500, 4500, 2200, 1500, 3300, 1800, 1700, 2000, 4000,19000,20000];
-sort($salaires);
+echo "Avant le tri (par valeur) :\\n";
+read_tab($tableau);
+
+$sorted_tableau = tri_selection($tableau);
 
 
-echo "Moyenne des salaires : " . moyenne($salaires) . "</br>";
-echo "Médiane des salaires : " . mediane($salaires) . "</br>";
-$salaireNicolas = 2200;
-if ($salaireNicolas < mediane($salaires)) {
-    echo "Nicolas n'est pas dans les moins bien payés de l'entreprise.</br>";
-} else {
-    echo "Nicolas est dans les moins bien payés de l'entreprise.</br>";
-}
+echo "Après le tri (par valeur) :\\n";
+read_tab($sorted_tableau);
+
+
+echo "Avant le tri (par référence) :\\n";
+read_tab($tableau);
+
+tri_selection_reference($tableau);
+
+
+echo "Après le tri (par référence) :\\n";
+read_tab($tableau);
+
 ?>
