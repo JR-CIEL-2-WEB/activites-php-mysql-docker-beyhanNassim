@@ -37,3 +37,4 @@ services:
 
 volumes:
   dbdata:   # volume managé pour sauvegarder la bdd en local
+
